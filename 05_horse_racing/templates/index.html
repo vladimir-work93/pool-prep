@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Скачки</title>
+</head>
+<body>
+    <h1>Скачки</h1>
+    <div class="board">
+        {% for horse in horses %}
+            <div class="lane">
+                <div class="lane-label">Лошадь {{ horse }}</div>
+                <div class="track">
+                    {% for cell in track %}
+                    <div
+                            class="cell{% if cell == state.positions[horse] %} horse-here{% endif %}">
+                        {% if cell == state.positions[horse] %}🐎{% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if not state.finished %}
+    <form method="post" action="/roll">
+        <button type="submit">Бросить кубики</button>
+    </form>
+    {% endif %}
+
+    {% if state.last_roll %}
+        <p class="roll-info">Последний бросок: {{ state.last_roll.dice[0] }} и
+            {{state.last_roll.dice[1] }},
+           сумма {{ state.last_roll.total }}</p>
+    {% endif %}
+
+    {% if state.finished %}
+    <p class="winner">Победила лошадь №{{ state.winner }}</p>
+    {% endif %}
+</body>
+</html>
