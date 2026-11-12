@@ -1,3 +1,4 @@
+/* Поле */
 .board {
     display: flex;
     flex-direction: column;
@@ -7,21 +8,25 @@
     border-radius: 12px;
 }
 
+/* Дорожка */
 .lane {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
+/* Фиксированная ширина линии */
 .lane-label {
     width: 90px;
 }
 
+/* Трек для одной лошади */
 .track {
     display: flex;
     gap: 2px;
 }
 
+/* Клетка поля */
 .cell {
     width: 32px;
     height: 32px;
@@ -33,16 +38,19 @@
     background: white;
 }
 
+/* Подсветка лошади желтым цветом */
 .horse-here {
     background: #ffe9a8;
     border: 2px solid #d4a017;
 }
 
+
 .cell:last-child{
     background: #e0e0e0;
 }
 
-button {
+/* Стилизация кнопки "Бросить кубик" */
+.roll-btn {
     padding: 10px 20px;
     font-size: 16px;
     background: #4a7c2e;
@@ -53,18 +61,47 @@ button {
     transition: background-color 0.3s ease;
 }
 
-button:hover{
+/* "Эффект для кнопки броска кубика */
+.roll-btn:hover{
     background: #3a5e1e;
 }
 
-.roll-info, .winner {
+/* Стилизация надписи о броске кубика */
+.roll-info{
     font-size: 20px;
     margin: 12px 0;
     font-weight: 600;
+    color: #5a4a1a;
 }
 
+
+/* Стилизация надписи о победителе */
 .winner {
     color: #4a7c2e;
     font-size: 24px;
     font-weight: 700;
+}
+
+
+/* Стиль для кнопки "Начать заново" */
+.reset-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #a33;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.reset-btn:hover {
+    background: #822;
+}
+
+/* Раздел с кнопками */
+.controls{
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
 }

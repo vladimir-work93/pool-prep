@@ -35,5 +35,10 @@ def roll():
     save_state(state)
     return redirect(url_for("index"))
 
+@app.route("/reset", methods=["POST"])
+def reset():
+    session["game"] = game.new_game()
+    return redirect(url_for("index"))
+
 if __name__ == "__main__":
     app.run(debug=True)

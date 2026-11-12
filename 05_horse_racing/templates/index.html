@@ -21,22 +21,31 @@
                 </div>
             </div>
         {% endfor %}
+
+        <div class="controls">
+            {% if not state.finished %}
+            <form method="post" action="/roll">
+                <button class="roll-btn" type="submit">Бросить кубики</button>
+            </form>
+            {% endif %}
+            <form method="post" action="/reset">
+                <button class="reset-btn" type="submit">Начать заново</button>
+            </form>
+        </div>
+
+        {% if state.last_roll %}
+
+            <p class="roll-info">Последний бросок: {{ state.last_roll.dice[0] }} и
+                {{state.last_roll.dice[1] }},
+               сумма {{ state.last_roll.total }}</p>
+
+        {% endif %}
+
+        {% if state.finished %}
+
+        <p class="winner">Победила лошадь №{{ state.winner }}</p>
+
+        {% endif %}
     </div>
-
-    {% if not state.finished %}
-    <form method="post" action="/roll">
-        <button type="submit">Бросить кубики</button>
-    </form>
-    {% endif %}
-
-    {% if state.last_roll %}
-        <p class="roll-info">Последний бросок: {{ state.last_roll.dice[0] }} и
-            {{state.last_roll.dice[1] }},
-           сумма {{ state.last_roll.total }}</p>
-    {% endif %}
-
-    {% if state.finished %}
-    <p class="winner">Победила лошадь №{{ state.winner }}</p>
-    {% endif %}
 </body>
 </html>
